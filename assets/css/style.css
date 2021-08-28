@@ -23,6 +23,7 @@ body {
   
   .description {
     white-space: pre-wrap;
+    background-color: rgb(199, 197, 197);
   }
   
   .time-block {
@@ -33,7 +34,7 @@ body {
   .row {
     white-space: pre-wrap;
     height: 80px;
-    border-top: 1px solid white;
+    border-top: 1px solid black;
   }
   
   .hour {
