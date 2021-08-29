@@ -23,3 +23,34 @@ function loadTasks() {
     });
 };
 
+//  CHECK TIME FUNCTION 
+function checkTime() {
+    // Loop through each textarea
+    $('textarea').each(function () {
+        // Set background color class based on matching id with current hour
+        if ($(this).attr('id') == currentHourMoment) {
+            $(this).addClass('present');
+        }
+        else if ($(this).attr('id') < currentHourMoment) {
+            $(this).addClass('past');
+        }
+        else if ($(this).attr('id') > currentHourMoment) {
+            $(this).addClass('future');
+        }
+        // Check time and apply classes every minute
+        setInterval(checkTime, (1000 * 60));
+    })
+};
+
+//  SAVE TASKS FUNCTION
+function saveTasks() {
+    // Create the task with a key value pair to pass to local storage
+    var id = $(this).parent().children('textarea').attr('id');
+    var task = $(this).parent().children('textarea').val();
+    localStorage.setItem(id, task);
+};
+
+loadTasks();
+checkTime();
+$('.saveBtn').click(saveTasks);
+
