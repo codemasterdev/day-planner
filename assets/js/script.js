@@ -8,7 +8,7 @@ $("#currentDay").html(currentDayMoment);
 // LOAD TASKS FUNCTION 
 function loadTasks() {
     // CLEAR TASK IF NO LONGER THE SAME DAY
-    if (currentHourMoment > 12) {
+    if (currentHourMoment === 0) {
         localStorage.clear();
 
     };
@@ -47,7 +47,9 @@ function saveTasks() {
     // Create the task with a key value pair to pass to local storage
     var id = $(this).parent().children('textarea').attr('id');
     var task = $(this).parent().children('textarea').val();
+    console.log(id, task);
     localStorage.setItem(id, task);
+
 };
 
 loadTasks();
