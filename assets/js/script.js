@@ -52,5 +52,6 @@ function saveTasks() {
 
 loadTasks();
 checkTime();
-$('.saveBtn').click(saveTasks);
+$('.saveBtn')
+    .click(saveTasks);
 
