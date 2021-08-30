@@ -7,12 +7,11 @@ $("#currentDay").html(currentDayMoment);
 
 // LOAD TASKS FUNCTION 
 function loadTasks() {
-    // CLEAR TASK IF NO LONGER THE SAME DAY
-    if (currentHourMoment === 0) {
-        localStorage.clear();
 
-    };
+    // if (currentHourMoment === 0) {
+    //     localStorage.clear();
 
+    // };
 
     Object.keys(localStorage).forEach((key) => {
         $('textarea').each(function () {
@@ -25,9 +24,9 @@ function loadTasks() {
 
 //  CHECK TIME FUNCTION 
 function checkTime() {
-    // Loop through each textarea
+    // LOOP THROUGH TEXT AREA
     $('textarea').each(function () {
-        // Set background color class based on matching id with current hour
+
         if ($(this).attr('id') == currentHourMoment) {
             $(this).addClass('present');
         }
@@ -37,14 +36,13 @@ function checkTime() {
         else if ($(this).attr('id') > currentHourMoment) {
             $(this).addClass('future');
         }
-        // Check time and apply classes every minute
         setInterval(checkTime, (1000 * 60));
     })
 };
 
 //  SAVE TASKS FUNCTION
 function saveTasks() {
-    // Create the task with a key value pair to pass to local storage
+
     var id = $(this).parent().children('textarea').attr('id');
     var task = $(this).parent().children('textarea').val();
     console.log(id, task);
@@ -56,4 +54,3 @@ loadTasks();
 checkTime();
 $('.saveBtn')
     .click(saveTasks);
-
